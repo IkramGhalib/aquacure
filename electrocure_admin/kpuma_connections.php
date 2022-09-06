@@ -53,17 +53,12 @@
       $id  = $cid;
       $type  = 0; 
      
-
-
-
-
       $q = "SELECT * from connections where cnic ='".$cid."'";
       //echo $q;
           
       $totalPeak = 0;
       $totalOffPk= 0;
          
-
         $resultactive = $conn -> query($q) or die("Query error");
 //echo $q;                              
         $index=0;
@@ -96,7 +91,7 @@
                $timediff = abs(ceil(($currenttime-$lasttime)/60));
                $avgVoltage  = round(($row['v1']+$row['v2']+$row['v3'])/3 ,2);
                $sumCurrent = round(($row['c1']+ $row['c2'] + $row['c3']),2);
-// $NC = round($row['NC'],2);
+              //$NC = round($row['NC'],2);
               $kva1 = round($row['c1'] * $row['v1']/1000,2);
               $kva2 = round($row['c2'] * $row['v2']/1000 ,2);
               $kva3 = round($row['c3'] * $row['v2']/1000 ,2);
