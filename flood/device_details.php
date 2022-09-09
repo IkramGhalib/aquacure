@@ -4,14 +4,13 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-   <?php  $pageName = "Rivers - Historical Data";  ?>
-
+     <?php  $pageName = "Branches - Historical Data";  ?>
   <title><?php echo $pageName; ?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
     <?php   include("includes/head.php");  ?>
-    
+
   <!-- =======================================================
   * Template Name: BizLand - v3.1.0
   * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
@@ -22,33 +21,16 @@
 
 <body>
 
-  <!-- ======= Top Bar ======= -->
- <!--  <section id="topbar" class="d-flex align-items-center">
-    <div class="container d-flex justify-content-center justify-content-md-between">
-      <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">contact@example.com</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>+92</span></i>
-      </div>
-      <div class="social-links d-none d-md-flex align-items-center">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- ======= Header ======= -->
  <?php   include("includes/navbar.php");  ?>
 
   <main id="main" data-aos="fade-up">
 
     <!-- ======= Breadcrumbs ======= -->
-   <section class="breadcrumbs">
+    <section class="breadcrumbs">
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-          <h2><?php  echo $pageName ?></h2>
+         <h2><?php  echo $pageName ?></h2>
           <ol>
             <li><a href="index.php">Home</a></li>
             <li><?php  echo $pageName ?></li>
@@ -68,7 +50,15 @@
 
     <?php 
       require_once("db/opendb.php");
-      $query = "select rivers.*, COUNT(bid) as cntBranches from rivers, branches where rivers.rid = branches.river GROUP by rid";
+
+      $details = (isset($_GET['d'])) ? $_GET['d'] : NULL;
+
+      if ($river == NULL) {
+        $query = "SELECT branches.*, rivers.name as rname, MIN(CAST(water_level.datetime AS CHAR)) as dtFrom, count(water_level.log_id) as cnt, MAX(CAST(water_level.datetime AS CHAR))dtTo FROM branches, rivers, water_level WHERE branches.bid = water_level.branch and rivers.rid = branches.river group by branch order by name";
+      }else{
+        $query = "SELECT branches.*, rivers.name as rname, MIN(CAST(water_level.datetime AS CHAR)) as dtFrom, count(water_level.log_id) as cnt, MAX(CAST(water_level.datetime AS CHAR))dtTo FROM branches, rivers, water_level WHERE branches.bid = water_level.branch and rivers.rid = branches.river and river = '".$details."' group by branch";
+      }
+      
 
       $result = $conn -> query($query) or die(error);
 ?>
@@ -81,24 +71,31 @@
 
 <?php
       foreach($result as $row){
-        $r = $row['rid'];
+        $b = $row['bid'];
+        $bn = $row['name'];
+        $from  = substr($row['dtFrom'],0,10);
+        $to = substr($row['dtTo'],0,10);
+
 
         ?>
 
           <div class="card ">
-            <div class=" row card-title bg-primary">
+            <div class=" row card-title bg-secondary">
               <h5 class="card-title"><br><?php echo $row['name']; ?><br></h5>
             </div>
             <div class="card-body" style="color: black; font-size: 12px;">
               
               <p>
-                River ID: <?php echo $row['rid']; ?> <br>
-                Longitude: <?php echo $row['longitude']; ?> <br>
-                Latitude: <?php echo $row['latitude']; ?><br>
-                No. of Branches: <?php echo $row['cntBranches']; ?>
+                Branch ID: <?php echo $row['bid']; ?> <br>
+                River Name <?php echo $row['rname']; ?><br>
+                Data From: <?php echo $row['dtFrom']; ?><br>
+                Data To: <?php echo $row['dtTo']; ?><br>
+                Records: <?php echo $row['cnt']; ?><br>
               </p>
               
-              <button class="btn btn-outline-primary btn-sm" onclick="window.location.href = 'h_branches.php?r=<?php echo $r;?>'">Branches</button>
+              <button class="btn btn-outline-success btn-sm" onclick="window.location.href = 'h_graph.php?b=<?php echo $b;?>&bn=<?php echo $bn; ?>&f=<?php echo $from; ?>&t=<?php echo $to; ?>'">Graph</button>
+              <!-- <button class="btn btn-outline-danger btn-sm">Download</button> -->
+              
             </div>
           </div>
 
@@ -110,10 +107,6 @@
         </div>
 
       </div>
-
-      <br>
-      <br>
-      <br>
     </section>
 
   </main><!-- End #main -->

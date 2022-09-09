@@ -30,7 +30,7 @@
       include_once("db/opendb.php");
       $lat = array();
       $long = array();
-      $query = "select * from devices";
+      $query = "select * from device";
       $result = $conn -> query($query) or die("Query error");
       $result2 = $conn -> query($query) or die("Query error");
     ?>
@@ -105,7 +105,7 @@ function initMap() {
 
         marker.addListener('click', (function(marker, i) {
             return function() {
-              link = "device_dashboard.php?id=";
+              link = "device_details.php?id=";
               window.location.href = link.concat(markers[i][0]);
               
             }

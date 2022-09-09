@@ -4,13 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-     <?php  $pageName = "Branches - Historical Data";  ?>
+   <?php  $pageName = "Device-- Historical Data";  ?>
+
   <title><?php echo $pageName; ?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
     <?php   include("includes/head.php");  ?>
-
+    
   <!-- =======================================================
   * Template Name: BizLand - v3.1.0
   * Template URL: https://bootstrapmade.com/bizland-bootstrap-business-template/
@@ -20,17 +21,17 @@
 </head>
 
 <body>
-
+  <!-- ======= Header ======= -->
  <?php   include("includes/navbar.php");  ?>
 
   <main id="main" data-aos="fade-up">
 
     <!-- ======= Breadcrumbs ======= -->
-    <section class="breadcrumbs">
+   <section class="breadcrumbs">
       <div class="container">
 
         <div class="d-flex justify-content-between align-items-center">
-         <h2><?php  echo $pageName ?></h2>
+          <h2><?php  echo $pageName ?></h2>
           <ol>
             <li><a href="index.php">Home</a></li>
             <li><?php  echo $pageName ?></li>
@@ -50,14 +51,8 @@
 
     <?php 
       require_once("db/opendb.php");
-
-      $river = (isset($_GET['r'])) ? $_GET['r'] : NULL;
-
-      if ($river == NULL) {
-        $query = "SELECT branches.*, rivers.name as rname, MIN(CAST(water_level.datetime AS CHAR)) as dtFrom, count(water_level.log_id) as cnt, MAX(CAST(water_level.datetime AS CHAR))dtTo FROM branches, rivers, water_level WHERE branches.bid = water_level.branch and rivers.rid = branches.river group by branch order by name";
-      }else{
-        $query = "SELECT branches.*, rivers.name as rname, MIN(CAST(water_level.datetime AS CHAR)) as dtFrom, count(water_level.log_id) as cnt, MAX(CAST(water_level.datetime AS CHAR))dtTo FROM branches, rivers, water_level WHERE branches.bid = water_level.branch and rivers.rid = branches.river and river = '".$river."' group by branch";
-      }
+      $query = "SELECT * FROM `device`";
+      // echo $query;
       
 
       $result = $conn -> query($query) or die(error);
@@ -71,31 +66,25 @@
 
 <?php
       foreach($result as $row){
-        $b = $row['bid'];
-        $bn = $row['name'];
-        $from  = substr($row['dtFrom'],0,10);
-        $to = substr($row['dtTo'],0,10);
-
+        $d= $row['device_id'];
+        // echo $r;
 
         ?>
 
           <div class="card ">
-            <div class=" row card-title bg-secondary">
+            <div class=" row card-title bg-primary">
               <h5 class="card-title"><br><?php echo $row['name']; ?><br></h5>
             </div>
             <div class="card-body" style="color: black; font-size: 12px;">
               
               <p>
-                Branch ID: <?php echo $row['bid']; ?> <br>
-                River Name <?php echo $row['rname']; ?><br>
-                Data From: <?php echo $row['dtFrom']; ?><br>
-                Data To: <?php echo $row['dtTo']; ?><br>
-                Records: <?php echo $row['cnt']; ?><br>
+                Device ID: <?php echo $row['device_id']; ?> <br>
+                Name: <?php echo $row['name']; ?> <br>
+                Longitude:  <?php echo $row['latitude']; ?><br>
+                Latitude: <?php echo $row['longitude']; ?>
               </p>
               
-              <button class="btn btn-outline-success btn-sm" onclick="window.location.href = 'h_graph.php?b=<?php echo $b;?>&bn=<?php echo $bn; ?>&f=<?php echo $from; ?>&t=<?php echo $to; ?>'">Graph</button>
-              <!-- <button class="btn btn-outline-danger btn-sm">Download</button> -->
-              
+              <button class="btn btn-outline-primary btn-sm" onclick="window.location.href = 'graph.php?d=<?php echo $d;?>'">Details</button>
             </div>
           </div>
 
@@ -107,6 +96,10 @@
         </div>
 
       </div>
+
+      <br>
+      <br>
+      <br>
     </section>
 
   </main><!-- End #main -->
