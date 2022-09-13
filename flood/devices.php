@@ -84,7 +84,7 @@
                 Latitude: <?php echo $row['longitude']; ?>
               </p>
               
-              <button class="btn btn-outline-primary btn-sm" onclick="window.location.href = 'graph.php?d=<?php echo $d;?>'">Details</button>
+              <button class="btn btn-outline-primary btn-sm" onclick="window.location.href = 'graph.php?id=<?php echo $d;?>'">Details</button>
             </div>
           </div>
 

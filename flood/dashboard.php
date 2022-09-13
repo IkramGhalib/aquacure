@@ -158,9 +158,6 @@ google.maps.event.addDomListener(window, 'load', initMap);
 }
 </style>
 
-        
-
-    
              
           </div>
           <br>

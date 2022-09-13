@@ -22,4 +22,10 @@ catch(PDOException $e)
 echo $e->getMessage();
 }
 
+$conn1=new mysqli("localhost","root","","smartenv_uet");
+
+if(!$conn1){
+	echo "Connection Failed";
+}
+
 ?>
