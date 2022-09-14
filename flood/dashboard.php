@@ -105,7 +105,7 @@ function initMap() {
 
         marker.addListener('click', (function(marker, i) {
             return function() {
-              link = "device_details.php?id=";
+              link = "graph.php?id=";
               window.location.href = link.concat(markers[i][0]);
               
             }
