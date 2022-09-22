@@ -66,23 +66,23 @@
         $data17 = array();
         
   
-        array_push($data1, "Temperature");
+        array_push($data1, "Temperature (C)");
         array_push($data2,  "0000-00-00 00:00:00");
-        array_push($data3, "Humidity");
-        array_push($data4, "Pressure");
-        array_push($data5, "CO");
-        array_push($data6, "WIND");
-        array_push($data7, "SO2");
-        array_push($data8, "CarbonDioxide");
+        array_push($data3, "Humidity (%)");
+        array_push($data4, "Pressure (mb)");
+        array_push($data5, "Carbon Monoxide (ppm)");
+        array_push($data6, "Wind (m/sec)");
+        array_push($data7, "Sulpher Dioxide (ppm)");
+        array_push($data8, "Carbon Dioxide (ppm)");
         array_push($data9, "NOX");
-        array_push($data10, "NitrogenDioxide");
-        array_push($data11, "SunLight");
-        array_push($data12, "Noice");
-        array_push($data13, "Ozone");
+        array_push($data10, "Nitrogen Dioxide (ppm)");
+        array_push($data11, "Sun Light (lux)");
+        array_push($data12, "Noise (db)");
+        array_push($data13, "Ozone (ppm)");
         array_push($data14, "DIR");
-        array_push($data15, "Rain");
-        array_push($data16, "Dust1");
-        array_push($data17, "Dust2");
+        array_push($data15, "Rain (mm)");
+        array_push($data16, "Dust (PM 10)");
+        array_push($data17, "AQI");
         
   
         foreach ($result as $row) {
@@ -199,7 +199,7 @@
             chart: {
             type: 'bar',
   
-            width: screen.width/2.5,
+            
             height: 500
           },
           plotOptions: {
@@ -244,7 +244,7 @@
       
       datentime = allData[0];
       datentime = datentime.reverse();
-      var colors = ["#CBDF1F", "#90F13B", "#38E86B", "#38E8C3", "#388BE8", "#9D38E8", "#E338E8"];
+      var colors = ["#4a9ae2"];
       var selectedColor="";
         for (var i = 1; i < allData.length; i++) {
   
