@@ -53,7 +53,7 @@
      <input type="text" list="devices" name="device" placeholder="Select Device" required="required" class="form-control"> 
      <datalist id="devices">"; 
      <?php  require "db/opendb.php"; 
-     $sql="Select * from devices"; 
+     $sql="Select * from device"; 
      $result = $conn->query($sql); 
      foreach ($result as $value)
      {?>
@@ -93,7 +93,7 @@ if(isset($_POST['btnShowmoreDetails']))
   $id=$_POST['device'];
   $fromdate=$_POST['fromdate'];
   $todate=$_POST['todate'];
-        $query = "SELECT devicelogs.*, devices.name  FROM `devicelogs`, devices where devices.device_id = devicelogs.device_id and devicelogs.device_id = '".$id."' AND devicelogs.dateTime BETWEEN '".$fromdate."' AND '".$todate."' order by dateTime desc";
+        $query = "SELECT devices_logs.*, device.name FROM `devices_logs`, device where device.device_id = devices_logs.device_id and devices_logs.device_id = '".$id."' AND devices_logs.datetime BETWEEN '".$fromdate."' AND '".$todate."' order by datetime desc";
 
         //echo $query;
        

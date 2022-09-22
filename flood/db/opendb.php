@@ -8,7 +8,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "smartenv_uet";
+    $dbname = "smartenv";
 
 try {
 $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -22,7 +22,7 @@ catch(PDOException $e)
 echo $e->getMessage();
 }
 
-$conn1=new mysqli("localhost","root","","smartenv_uet");
+$conn1=new mysqli("localhost","root","","smartenv");
 
 if(!$conn1){
 	echo "Connection Failed";
