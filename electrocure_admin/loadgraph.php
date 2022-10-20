@@ -27,7 +27,7 @@ $graphName = "";
 
   <style>
     body{
-background-color: #ECF0F5;
+      background-color: #ECF0F5;
 
     }
     #chart1 {

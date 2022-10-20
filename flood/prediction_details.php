@@ -82,7 +82,7 @@
               array_push($data3,round($error,2));
               array_push($data4,$row['predicted_time']);  
               $location = $row['location'] ;
-              $name = $row['name'] ;
+              $name = $row['name'];
           }
 
         ?>

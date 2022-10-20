@@ -52,12 +52,14 @@
 
      <input type="text" list="devices" name="device" placeholder="Select Device" required="required" class="form-control"> 
      <datalist id="devices">"; 
-     <?php  require "db/opendb.php"; 
+     <?php  
+     require "db/opendb.php"; 
      $sql="Select * from device"; 
      $result = $conn->query($sql); 
      foreach ($result as $value)
      {?>
-        <option value="<?php echo $value['device_id']; ?>"><?php echo $value['name']; ?></option>
+        <option value="<?php echo $value['device_id']; ?>">
+        <?php echo $value['name']; ?></option>
           
 	     <?php
      	}
@@ -93,12 +95,13 @@ if(isset($_POST['btnShowmoreDetails']))
   $id=$_POST['device'];
   $fromdate=$_POST['fromdate'];
   $todate=$_POST['todate'];
-        $query = "SELECT devices_logs.*, device.name FROM `devices_logs`, device where device.device_id = devices_logs.device_id and devices_logs.device_id = '".$id."' AND devices_logs.datetime BETWEEN '".$fromdate."' AND '".$todate."' order by datetime desc";
+  $query="SELECT devices_logs.*,device.name FROM `devices_logs` JOIN device on device.device_id=devices_logs.device_id and device.device_id=".$id."' and devices_logs.datetime BETWEEN '".$fromdate."' AND '".$todate."' order by datetime desc";
+        // $query = "SELECT devices_logs.*, device.name FROM `devices_logs`, device where device.device_id = devices_logs.device_id and devices_logs.device_id = '".$id."' AND devices_logs.datetime BETWEEN '".$fromdate."' AND '".$todate."' order by datetime desc";
 
-        //echo $query;
+        echo $query;
        
             $result = $conn->query($query); 
-            if($result->rowCount()>0)
+            if($result)
             {
                   echo ' <br><div class="alert alert-success alert-dismissible">
                   <h5><i class="icon fas fa-check"></i> Success!</h5>
@@ -120,9 +123,7 @@ if(isset($_POST['btnShowmoreDetails']))
                 <th>Temprature (<sup>o</sup>C)</th>
                 <th>Humidity (%)</th>
                 <th>Rain</th>
-                <th>Flow</th>
-                <th>Water Level</th>
-                <th>Pressure</th>
+                
                 <th>Date & Time</th>
                 
                
@@ -131,7 +132,6 @@ if(isset($_POST['btnShowmoreDetails']))
             </thead>
             <tbody>
               <?php
-
                  foreach ($result as $value) {
               ?>
                 <tr>
@@ -139,12 +139,9 @@ if(isset($_POST['btnShowmoreDetails']))
                   <td><?php echo $value['name']; ?></td>
                   <td><?php echo $value['temprature']; ?></td>
                   <td><?php echo $value['humidity']; ?></td>
-                  <td><?php echo $value['rainfall']; ?></td>
-                  <td><?php echo $value['flow']; ?></td>
-                  <td><?php echo $value['water_level']; ?></td>
-                  <td><?php echo $value['pressure']; ?></td>
+                  <!--  -->
 
-                  <td><?php echo date( 'M d Y g:i A ', strtotime($value['dateTime'])) ?></td>
+                  <td><?php echo date( 'M d Y g:i A ', strtotime($value['datetime'])) ?></td>
                   
 
                 </tr>

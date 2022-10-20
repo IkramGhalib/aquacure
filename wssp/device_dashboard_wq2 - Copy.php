@@ -85,10 +85,6 @@ if( !isset($_SESSION['name']) ){
     array_push($data2, $row['datetime']);
   }
 
-
-
-
-  
 ?>
   
   <div class="content-wrapper" style="margin-top: <?php echo $contentmargin?>px">
@@ -136,7 +132,7 @@ if( !isset($_SESSION['name']) ){
               <div class="col-lg-4 col-xs-6">
                 <!-- small box -->
                 <div class="small-box bg-blue">
-                  <div class="inner"> <h5><?php echo $data4[0];?></h5>
+                  <div class="inner"><h5><?php echo $data4[0];?></h5>
                     <h3><?php echo $data4[sizeof($data4)-1] ?></h3>
                   </div>
                   

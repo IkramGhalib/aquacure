@@ -77,18 +77,18 @@ if( !isset($_SESSION['name']) ){
     $query = "select * from transformer";
     $result = $conn -> query($query) or die("Query error");
 
-    foreach($result as $row){
-    $datetime = substr($row['connectiondate'],2);
-                                        $datetime = strtotime($datetime);
-                                        $date = date('d/m/y',$datetime);
-                                        $time = date('h:i:s A',$datetime);
-                                        
-                                        $datetime2 = substr($row['switch_time'],2);
-                                        $datetime2 = strtotime($datetime2);
-                                        $date2 = date('d/m/y',$datetime2);
-                                        $time2 = date('h:i:s A',$datetime2);
-                                        $cause= $row['cause'];
-                                        
+                    foreach($result as $row){
+                    $datetime = substr($row['connectiondate'],2);
+                              $datetime = strtotime($datetime);
+                              $date = date('d/m/y',$datetime);
+                              $time = date('h:i:s A',$datetime);
+                              
+                              $datetime2 = substr($row['switch_time'],2);
+                              $datetime2 = strtotime($datetime2);
+                              $date2 = date('d/m/y',$datetime2);
+                              $time2 = date('h:i:s A',$datetime2);
+                              $cause= $row['cause'];
+                                  
                                            $currenttime = date('y-m-d H:i:s');
                    
                                             $lasttime =$row['datetime'];

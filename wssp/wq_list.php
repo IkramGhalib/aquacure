@@ -53,9 +53,14 @@ if( !isset($_SESSION['name']) ){
 
     
       
-    <div id="overflow" style="overflow-x:auto;">
-    <table id="example1"  class="table table-responsive table-bordered table-striped">
-    <thead class="bg-blue">
+    <div class="wrapper1">
+    <div class="div1">
+    </div>
+</div>
+<div class="wrapper2">
+    <div class="example1_wrapper div2">
+   <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
+   <thead class="bg-blue">
     <tr>
     <th scope="col">WQ ID</th>
     <th scope="col">TW ID</th>
@@ -270,3 +275,28 @@ function exportTableToCSV(filename) {
 
 
 </script>
+
+<style type="text/css">
+	.wrapper1, .wrapper2{
+        width: 1150px; border: none 0px RED;
+        overflow-x: scroll;overflow-y:hidden;
+    }
+        .wrapper1{height: 20px; }
+        .wrapper2{height:800px; }
+        .div1 {width:1700px; height: 200px; }
+        .div2 {width:1700px; height: 2000px; overflow: auto;}
+</style>
+<script type="text/javascript">
+	$(function(){
+    $(".wrapper1").scroll(function(){
+        $(".wrapper2")
+            .scrollLeft($(".wrapper1").scrollLeft());
+    });
+    $(".wrapper2").scroll(function(){
+        $(".wrapper1")
+            .scrollLeft($(".wrapper2").scrollLeft());
+    });
+});
+</script>
+
+

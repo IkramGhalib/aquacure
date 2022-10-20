@@ -1,10 +1,10 @@
 <?php
   require_once("subdivid.php");
 
-	$servername = "10.13.144.6";
-	$username = "user_".$subdivid;
-	$password = "Adm1n@".$subdivid;
-	$dbname = $dbtype."_".$subdivid;
+	// $servername = "10.13.144.6";
+	// $username = "user_".$subdivid;
+	// $password = "Adm1n@".$subdivid;
+	// $dbname = $dbtype."_".$subdivid;
 
 	$servername = "localhost";
 	$username = "root";

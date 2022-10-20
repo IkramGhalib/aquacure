@@ -81,7 +81,8 @@
                 Device ID: <?php echo $row['device_id']; ?> <br>
                 Name: <?php echo $row['name']; ?> <br>
                 Longitude:  <?php echo $row['latitude']; ?><br>
-                Latitude: <?php echo $row['longitude']; ?>
+                Latitude: <?php echo $row['longitude']; ?><br>
+                Dust 2.5: <?php echo $row['Dust_sensor_2p5']; ?>
               </p>
               
               <button class="btn btn-outline-primary btn-sm" onclick="window.location.href = 'graph.php?id=<?php echo $d;?>'">Details</button>

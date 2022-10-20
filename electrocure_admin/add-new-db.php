@@ -60,7 +60,7 @@
 
 	<form method = "POST">
 
-<form method = "POST">
+<!-- <form method = "POST"> -->
 
 <div class = "form-group row">
 <label class="col-sm-2 col-form-label">Transformer ID</label>
@@ -81,16 +81,13 @@
 	?>										
 </div>
 </div> 
-							
-												
-								<div class = "form-group row">
-									<label class="col-sm-2 col-form-label">Capacity (KVA)</label>
-									<div class="col-sm-6">                                        
-											<input type="text" class="form-control" name = "tcapacity" placeholder = "Distribution Box Capacity" required = "required" />                                  
-									</div>
-							</div>
-							
-						
+																
+				<div class = "form-group row">
+					<label class="col-sm-2 col-form-label">Capacity (KVA)</label>
+					<div class="col-sm-6">                                        
+							<input type="text" class="form-control" name = "tcapacity" placeholder = "Distribution Box Capacity" required = "required" />                                  
+					</div>
+			</div>
 							
 							<div class = "form-group row">
 									<label class="col-sm-2 col-form-label">Distribution Box Type</label>

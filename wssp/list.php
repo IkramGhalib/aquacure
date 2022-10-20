@@ -64,7 +64,7 @@ if( !isset($_SESSION['name']) ){
             ?>
            
       
-    <div id="overflow" style="overflow-x:auto;">
+    <div id="overflow" style="overflow:auto;direction:rtl;">
     <div class="example1_wrapper"></div>
     <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
     <thead class="bg-blue">

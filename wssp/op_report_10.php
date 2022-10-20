@@ -77,19 +77,20 @@ if( !isset($_SESSION['name']) ){
               </div>
               
               </form>
-            <br><br>
+            <br>
+            <br>
     
    
 
     <?php
-    function search_arr($data, $key){
-    for ($a=0; $a < sizeof($data); $a++) { 
-      if ($data[$a][0] == $key) {
+      function search_arr($data, $key){
+      for ($a=0; $a < sizeof($data); $a++) { 
+        if ($data[$a][0] == $key) {
         return $a;
-      }
-    } 
-    return -1;
-  }
+        }
+      } 
+      return -1;
+    }
     require_once("opendb.php");
       //   $servername = "localhost";
       // $username = "root";
@@ -141,69 +142,69 @@ if( !isset($_SESSION['name']) ){
               //   }
               // }
 
-   // $query = "select tr_current_logs.trid,transformer.name, transformer.normal_run, transformer.location, transformer.uc, transformer.nc, transformer.zone, tr_current_logs.datetime from tr_current_logs, transformer where tr_current_logs.datetime between '".$from."' and '".$realto."' and transformer.trid = tr_current_logs.trid and (B1U+B1M+B1L) > 5 order by tr_current_logs.trid, tr_current_logs.id";
+  //  $query = "select tr_current_logs.trid,transformer.name, transformer.normal_run, transformer.location, transformer.uc, transformer.nc, transformer.zone, tr_current_logs.datetime from tr_current_logs, transformer where tr_current_logs.datetime between '".$from."' and '".$realto."' and transformer.trid = tr_current_logs.trid and (B1U+B1M+B1L) > 5 order by tr_current_logs.trid, tr_current_logs.id";
 
 
-   //  $result = $conn -> query($query) or die(error);
+  //   $result = $conn -> query($query) or die(error);
 
-   //    $trid = "";
-   //    $df = array();
-   //    $final = array();
+  //     $trid = "";
+  //     $df = array();
+  //     $final = array();
 
-   //    foreach ($result as $row) {
-   //        array_push($df, $row);
-   //    }
+  //     foreach ($result as $row) {
+  //         array_push($df, $row);
+  //     }
 
-   //    $fromd = "";
-   //    $tod = "";
-   //    $flag=1;
-   //    $cnt = 0;
-   //    for ($i=0; $i < sizeof($df)-1; $i++) { 
+  //     $fromd = "";
+  //     $tod = "";
+  //     $flag=1;
+  //     $cnt = 0;
+  //     for ($i=0; $i < sizeof($df)-1; $i++) { 
 
-   //      if ($df[$i]['trid'] == $df[$i+1]['trid']) {
-   //          $time1 = strtotime($df[$i]['datetime']);
-   //          $time2 = strtotime($df[$i+1]['datetime']);
-   //          if($flag == 1){
-   //              $fromd = $df[$i]['datetime'];
-   //              $cnt = 0;
-   //              $flag = 0;
-   //          }
-   //          $diff = ($time2-$time1)/60;
-   //          if ($diff > 30) {
-   //              $cnt++;
-   //              $tod = $df[$i]['datetime'];
-   //              $flag = 1;
-   //              $time3 = strtotime($fromd);
-   //              $time4 = strtotime($tod);
-   //              $diff2 = ($time4-$time3)/60;
+  //       if ($df[$i]['trid'] == $df[$i+1]['trid']) {
+  //           $time1 = strtotime($df[$i]['datetime']);
+  //           $time2 = strtotime($df[$i+1]['datetime']);
+  //           if($flag == 1){
+  //               $fromd = $df[$i]['datetime'];
+  //               $cnt = 0;
+  //               $flag = 0;
+  //           }
+  //           $diff = ($time2-$time1)/60;
+  //           if ($diff > 30) {
+  //               $cnt++;
+  //               $tod = $df[$i]['datetime'];
+  //               $flag = 1;
+  //               $time3 = strtotime($fromd);
+  //               $time4 = strtotime($tod);
+  //               $diff2 = ($time4-$time3)/60;
                 
-   //              $dtsp = explode(" ",$from);
-   //              $index = search_arr($pumps, $df[$i-1]['trid']);
-   //              if ( $index != -1) {
-   //                  // $pumps[$index][8] += $diff2; 
+  //               $dtsp = explode(" ",$from);
+  //               $index = search_arr($pumps, $df[$i-1]['trid']);
+  //               if ( $index != -1) {
+  //                   // $pumps[$index][8] += $diff2; 
 
-   //                  $pumps[$index][9] += 1;
-   //              }
+  //                   $pumps[$index][9] += 1;
+  //               }
                     
-   //              }
-   //              // echo $df[$i-1]['trid']."---".$from."---".$to."...".round($diff2)."<br>";
-   //          }else{
-   //          $tod = $df[$i]['datetime'];
-   //          $flag = 1;
-   //          $cnt++;
-   //          $time3 = strtotime($fromd);
-   //          $time4 = strtotime($tod);
-   //          $diff2 = ($time4-$time3)/60;
-   //          $index = search_arr($pumps, $df[$i-1]['trid']);
-   //          if ( $index != -1) {
+  //               }
+  //               // echo $df[$i-1]['trid']."---".$from."---".$to."...".round($diff2)."<br>";
+  //           }else{
+  //           $tod = $df[$i]['datetime'];
+  //           $flag = 1;
+  //           $cnt++;
+  //           $time3 = strtotime($fromd);
+  //           $time4 = strtotime($tod);
+  //           $diff2 = ($time4-$time3)/60;
+  //           $index = search_arr($pumps, $df[$i-1]['trid']);
+  //           if ( $index != -1) {
 
-   //                  // $pumps[$index][8] += $diff2; 
-   //                  $pumps[$index][9] += 1; 
-   //          }
-   //          // echo $df[$i-1]['trid']."---".$from."---".$to."...".round($diff2)."<br>";
-   //      }
+  //                   // $pumps[$index][8] += $diff2; 
+  //                   $pumps[$index][9] += 1; 
+  //           }
+  //           // echo $df[$i-1]['trid']."---".$from."---".$to."...".round($diff2)."<br>";
+  //       }
         
-   //  }
+  //   }
 
 
 
@@ -246,6 +247,7 @@ if( !isset($_SESSION['name']) ){
             
             ?>
              <div id="overflow" style="overflow-x:auto;">
+             <table id="example1" class="table table-bordered table-striped dataTable dtr-inline">
               <table id="example1"  class="table table-responsive table-bordered table-striped">
               <thead class="bg-blue">
               <tr>
@@ -338,19 +340,19 @@ if( !isset($_SESSION['name']) ){
 </html>
 
    <script>
-    $(function () {
-    $('#example1').DataTable(
-    {"order": [[ 0, "asc" ]],
-        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]})
-    $('#example2').DataTable({
-    'paging'      : true,
-    'lengthChange': false,
-    'searching'   : false,
-    'ordering'    : true,
-    'info'        : true,
-    'autoWidth'   : false
-    })
-    });
+    // $(function () {
+    // $('#example1').DataTable(
+    // {"order": [[ 0, "asc" ]],
+    //     "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]})
+    // $('#example2').DataTable({
+    // 'paging'      : true,
+    // 'lengthChange': false,
+    // 'searching'   : false,
+    // 'ordering'    : true,
+    // 'info'        : true,
+    // 'autoWidth'   : false
+    // })
+    // });
 
         function downloadCSV(csv, filename) {
     var csvFile;

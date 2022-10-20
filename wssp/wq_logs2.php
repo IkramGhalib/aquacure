@@ -213,7 +213,7 @@ if( !isset($_SESSION['name']) ){
                '<td>'.$sal.'</td>';
             
           ?>
-          <td><?php echo $row ['datetime'];  ?></td>
+               <td><?php echo $row ['datetime'];  ?></td>
             
             </tr>
 
