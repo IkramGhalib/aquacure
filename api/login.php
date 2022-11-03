@@ -7,7 +7,7 @@ require_once 'opendb.php';
 $userid=$_POST['userid'];
   $password=$_POST['password'];
  
-  $checkUser="SELECT * FROM users WHERE userid='$userid'";
+  $checkUser="SELECT * FROM login_info WHERE user_name='$userid'";
  
   $result=mysqli_query($conn,$checkUser);
  
@@ -15,7 +15,7 @@ $userid=$_POST['userid'];
  
   if(mysqli_num_rows($result)>0){ 
  
-    $checkUserquery="SELECT * FROM users WHERE userid='$userid' and password='$password'";
+    $checkUserquery="SELECT * FROM login_info WHERE user_name='$userid' and user_password='$password'";
     // echo $checkUserquery;
     $resultant=mysqli_query($conn,$checkUserquery);
  
