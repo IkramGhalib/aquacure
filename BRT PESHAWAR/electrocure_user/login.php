@@ -55,7 +55,7 @@
     $stmt = NULL;
     $result = NULL;
 
-    $query = "select cid,assignee_name,billing_method from connections where cid = :username and password = :pass";
+    $query = "select cidi,assgnee_name,billing_method from connections where cid = :username and password = :pass";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':username', $txtuserid);
     $stmt->bindParam(':pass', $txtpasswd);
