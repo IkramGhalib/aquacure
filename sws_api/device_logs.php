@@ -1,7 +1,7 @@
 <?php
 require_once 'opendb.php';
 $device_id=$_POST['device_id'];
-$query = "SELECT eid,round(AVG(temp)) as temp,round(AVG(humidity)) as hum,round(AVG(O3)) as o3,round(AVG(wind_speed)) as ws,round(AVG(D_10)) as d10,round(AVG(D2_5)) as d2_5,round(AVG(NO)) as no,round(AVG(No_x)) as nox,round(AVG(NO2)) as no_2,round(AVG(SO_2)) as so_2,datetime from devices_logs where eid='$device_id'";
+$query = "SELECT envocure.name as device_name,envocure.*,devices_logs.* from devices_logs, envocure where id in (SELECT max(id) from devices_logs group by eid) and envocure.eid = devices_logs.eid and envocure.eid='$device_id' ORDER by devices_logs.datetime desc";
 
 
 //   $query="select trid,name,longitude,latitude from transformer where trid='$device_id'";
