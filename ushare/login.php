@@ -16,7 +16,7 @@ require_once 'opendb.php';
  
   if(mysqli_num_rows($result)>0){ 
  
-    $checkUserquery="select userid, name,owner,occupant from users where userid ='$cid' and password='$password'";
+    $checkUserquery="select userid, name from users where userid ='$cid' and password='$password'";
     // echo $checkUserquery;
     $resultant=mysqli_query($conn,$checkUserquery);
  
