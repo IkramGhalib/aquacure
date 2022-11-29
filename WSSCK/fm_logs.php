@@ -69,7 +69,7 @@ if( !isset($_SESSION['name']) ){
               </div>
               <div class="row">
                 <div class="col-md-2">
-                  <input type="text" list="pumps" name="transformer" placeholder="Select WQ Device" required="required" class="form-control">
+                  <input type="text" list="pumps" name="transformer" placeholder="Select Flowmeter Device" required="required" class="form-control">
                   <datalist id="pumps" >
                     <?php
                     

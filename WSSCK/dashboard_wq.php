@@ -204,7 +204,7 @@ if( !isset($_SESSION['name']) ){
             
                             <div class="box-footer no-padding" >
                               
-                              <!-- Last Pulse: <?php //echo $values[$i][12]; ?><br> -->
+                              Last Pulse: <?php echo $values[$i][12]; ?><br>
                              
                              
                               
